@@ -7,7 +7,7 @@ Made with the help of his video https://youtu.be/m2Twu9k5VQQ.
 Thx!
 
 ## Installation
-*Coming soon*
+You can download the latest build in the [Releases](https://github.com/EweLoHD/FortniteReplayReader/releases) and add it to your project.
 
 ## Usage
 Some basic examples to show the usage of FortniteReplayReader
