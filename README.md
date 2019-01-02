@@ -41,6 +41,6 @@ Unstoppable_Frkn killed PartyBG
 ```
 
 ## To-Do
-- [ ] GunTypes
+- [x] GunTypes
 - [ ] Knocked?
 - [ ] and much more ...
