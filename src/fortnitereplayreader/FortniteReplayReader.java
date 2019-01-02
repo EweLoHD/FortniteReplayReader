@@ -69,8 +69,10 @@ public class FortniteReplayReader {
 
                     String victim = reader.readFString();
                     String killer = reader.readFString();
+                    int gunType = reader.read();
+                    boolean isKnocked = reader.readInt32() == 1;
 
-                    eliminations.add(new Elimination(time, victim, killer));
+                    eliminations.add(new Elimination(time, victim, killer, isKnocked));
                 }
 
                 if (metadata.equals("AthenaMatchStats")) {
