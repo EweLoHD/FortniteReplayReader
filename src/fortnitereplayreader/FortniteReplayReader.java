@@ -69,7 +69,7 @@ public class FortniteReplayReader {
 
                     String victim = reader.readFString();
                     String killer = reader.readFString();
-                    int gunType = reader.read();
+                    int gunType = reader.readInt32();
                     boolean isKnocked = reader.readInt32() == 1;
 
                     eliminations.add(new Elimination(time, victim, killer, isKnocked));
