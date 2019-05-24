@@ -1,4 +1,4 @@
-package fortnitereplayreader;
+package fortnitereplayreader.model;
 
 public class Elimination {
 
@@ -7,7 +7,7 @@ public class Elimination {
     private String killer;
     private boolean isKnocked;
 
-    public Elimination(int time, String victim, String killer, boolean isKnocked) {
+    public Elimination(int time, String victim, String killer, int gunType, boolean isKnocked) {
         this.time = time;
         this.victim = victim;
         this.killer = killer;
