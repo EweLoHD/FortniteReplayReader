@@ -101,16 +101,17 @@ public class FortniteReplayReader {
     }
 
     protected void parseElimination(int time1) throws Exception {
-        reader.skip(45);
+        reader.skip(87);
 
-        String victim = reader.readFString();
-        String killer = reader.readFString();
+        String victimId = stringFromBytes(reader.readBytes(16));
+        reader.skip(2);
+        String killerId = stringFromBytes(reader.readBytes(16));
         int gunType = reader.readBytes(1)[0];
         int knocked = reader.readInt32();
         boolean isKnocked = knocked == 1;
         //System.out.println(gunType + " - " + knocked);
 
-        eliminations.add(new Elimination(time1, victim, killer, gunType, isKnocked));
+        eliminations.add(new Elimination(time1, victimId, killerId, gunType, isKnocked));
     }
 
     protected void parseMatchStats() throws Exception {
@@ -179,6 +180,14 @@ public class FortniteReplayReader {
         }*/
     }
 
+
+    public static String stringFromBytes(byte bytes[]) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 
     /**
      * Returns a list with all eliminations. Each one contains information like who killed who with which gun and more.

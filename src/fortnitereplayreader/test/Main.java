@@ -3,22 +3,61 @@ package fortnitereplayreader.test;
 import fortnitereplayreader.model.Elimination;
 import fortnitereplayreader.FortniteReplayReader;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        //FortniteReplayReader replay = new FortniteReplayReader(new File("C:\\Users\\EweLo\\AppData\\Local\\FortniteGame\\Saved\\Demos\\UnsavedReplay-2019.05.17-17.03.26.replay"));
-        FortniteReplayReader replay = new FortniteReplayReader(new File("C:\\Users\\EweLo\\Downloads\\ASD.replay"));
+        File replayFile;
+        FortniteReplayReader replay = null;
 
-
-
-        for(Elimination elimination : replay.getEliminations()) {
-            System.out.println(elimination.getKiller() + " killed " + elimination.getVictim());
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
         }
 
-        /*System.out.println("Replay Name: " + replay.getReplayInfo().getFriendlyName());
-        System.out.println("Your Position: " + replay.getReplayInfo().getPosition() + " / " + replay.getReplayInfo().getTotalPlayers());*/
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+        jfc.setDialogTitle("Select a Replay");
+        jfc.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Fortnite Replay Files", "replay");
+        jfc.addChoosableFileFilter(filter);
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            try {
+                jfc.setCurrentDirectory(new File(System.getProperty("user.home") + "/appdata/Local/FortniteGame/Saved/Demos"));
+            } catch (Exception e) {
+
+            }
+        }
+
+        System.out.println("\nSelecting a File ...");
+
+        int returnValue = jfc.showOpenDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            replayFile = jfc.getSelectedFile();
+            try {
+                replay = new FortniteReplayReader(replayFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println(replay.getMeta().getFriendlyName());
+
+        for (Elimination e : replay.getEliminations()) {
+            System.out.println(e.getKillerId() + " killed " + e.getVictimId());
+        }
     }
 
 }

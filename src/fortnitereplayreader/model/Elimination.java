@@ -3,14 +3,14 @@ package fortnitereplayreader.model;
 public class Elimination {
 
     private int time;
-    private String victim;
-    private String killer;
+    private String victimId;
+    private String killerId;
     private boolean isKnocked;
 
-    public Elimination(int time, String victim, String killer, int gunType, boolean isKnocked) {
+    public Elimination(int time, String victimId, String killerId, int gunType, boolean isKnocked) {
         this.time = time;
-        this.victim = victim;
-        this.killer = killer;
+        this.victimId = victimId;
+        this.killerId = killerId;
         this.isKnocked = isKnocked;
     }
 
@@ -23,19 +23,19 @@ public class Elimination {
     }
 
     /**
-     * Returns the name of the player who was killed.
-     * @return Name of the victim.
+     * Returns the account id of the player who was killed.
+     * @return AccountID of the victim.
      */
-    public String getVictim() {
-        return victim;
+    public String getVictimId() {
+        return victimId;
     }
 
     /**
-     * Returns the name of the player who killed the victim.
-     * @return Name of the Killer.
+     * Returns the account id of the player who killed the victimId.
+     * @return AccountId of the killer.
      */
-    public String getKiller() {
-        return killer;
+    public String getKillerId() {
+        return killerId;
     }
 
     /**
