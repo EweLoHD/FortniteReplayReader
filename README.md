@@ -2,9 +2,10 @@
 A libary to read Fortnite .replay files. 
 
 Inspired by https://github.com/fredimachado/FortniteReplayReader by Fredi Machado.
-
 Made with the help of his video https://youtu.be/m2Twu9k5VQQ.
 Thx!
+
+Come to talk to us here: https://discord.gg/FrkWggw
 
 ## Installation
 You can download the latest build in the [Releases](https://github.com/EweLoHD/FortniteReplayReader/releases) and add it to your project.
