@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.UUID;
 
 /**
  * A java class that is capable for parsing .net BinaryWriter encoded files.
@@ -177,6 +178,10 @@ public class BinaryReader extends FilterInputStream {
         }
 
         return value.trim().replaceAll("\0", "");
+    }
+
+    public UUID readUUID() throws Exception {
+        return UUID.nameUUIDFromBytes(this.readBytes(16));
     }
 
     @Override

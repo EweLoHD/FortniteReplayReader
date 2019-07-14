@@ -48,6 +48,7 @@ public class Main {
         }
 
         System.out.println(replay.getMeta().getFriendlyName());
+        System.out.println("Match ID: " + replay.getMeta().getMatchId());
 
         for (Elimination e : replay.getEliminations()) {
             System.out.println(e.getKillerId() + " killed " + e.getVictimId());

@@ -1,5 +1,7 @@
 package fortnitereplayreader.model;
 
+import java.util.UUID;
+
 public class Meta {
 
     private int magicNumber;
@@ -9,6 +11,7 @@ public class Meta {
     private int changeList;
     private String friendlyName;
     private boolean isLive;
+    private UUID matchId;
 
 
     public Meta(int magicNumber, int fileVersion, int lengthInMs, int networkVersion, int changeList, String friendlyName, boolean isLive) {
@@ -48,5 +51,15 @@ public class Meta {
 
     public boolean isLive() {
         return isLive;
+    }
+
+    public UUID getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(UUID matchId) {
+        if (this.matchId != null)
+            return;
+        this.matchId = matchId;
     }
 }
