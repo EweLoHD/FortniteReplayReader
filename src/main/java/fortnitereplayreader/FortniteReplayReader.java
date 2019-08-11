@@ -8,6 +8,7 @@ import fortnitereplayreader.util.BinaryReader;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * This is inspired an was made with the help of https://github.com/fredimachado/FortniteReplayReader by Fredi Machado.
@@ -159,7 +160,8 @@ public class FortniteReplayReader {
         int season = reader.readInt32();
         int unknown1 = reader.readInt32();
 
-        reader.skip(16);
+        UUID matchId = reader.readUUID();
+        this.meta.setMatchId(matchId);
 
         int unknown2 = reader.readInt16();
         int replayVersion = reader.readInt32();
